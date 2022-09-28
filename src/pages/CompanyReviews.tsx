@@ -48,7 +48,7 @@ export function CompanyReviews(){
                   <p><i>{company.address}</i></p>
                   <div className="content-company-rating">
                   <h5>{company.rating} ⭐⭐⭐⭐⭐</h5>
-                  <p>{company.reviews.length} Reviews</p>
+                  <p>{company.reviews.length} reviews</p>
                   </div>
                 </div>
     
