@@ -41,12 +41,12 @@
 .find-job-navbar-list-left {
   float: left;
   position: relative;
-  right: 150px;
+  right: 140px;
 }
 .find-job-navbar-list-left-two {
   float: left;
   position: relative;
-  right: 300px;
+  right: 260px;
 }
 .find-job-navbar-list-right {
   float: right;
@@ -94,4 +94,45 @@
 }
 .job-feed {
   grid-area: job-feed;
+}
+.company-reviews{
+  margin-left: 200px;
+  margin-top: 100px;
+}
+.company-reviews h3{
+  color: gray;
+  font-weight: 400;
+}
+.company-search-form{
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  text-align: center;
+  gap: 15px;
+}
+.company-search-input{
+  width: 700px;
+  height: 50px;
+  border-radius: 10px;
+  border: thin solid gray;
+  padding-left: 10px;
+  margin-left: 260px;
+}
+.company-search-btn{
+  width: 200px;
+  height: 50px;
+  color: white;
+  background-color: #2557a7;
+}
+.companies{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 0.5fr));
+  gap: 30px;
+  justify-content: center;
+}
+.company{
+  border: thin solid gray;
+  padding: 20px;
+  height: 300px;
+
 }
