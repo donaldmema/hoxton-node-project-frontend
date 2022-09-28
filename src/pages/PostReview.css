@@ -1,0 +1,21 @@
+.post-review{
+    display: grid;
+    gap:5px;
+    margin:0 500px;
+}
+.post-review input{
+    width: 400px;
+    height: 40px;
+}
+.review-btn{
+    background-color: white;
+    border: thin solid gainsboro;
+}
+.review-btn:hover{
+    background-color: #2557a7;
+    color: white;
+}
+.raiting-input{
+    display: grid;
+    grid-auto-flow: column;
+}

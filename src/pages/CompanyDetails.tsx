@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { JobFeed } from "../components/JobFeed";
 import { NavBarFindJobs } from "../components/NavBarFindJobs";
 import "./CompanyDetails.css";
@@ -45,7 +45,7 @@ export function CompanyDetails(){
             </div>
             <div className="follow-review-btn">
             <button className="follow-btn">Follow</button>
-            <button className="review-btn">Write a review</button>
+            <Link to={"/postreview/"}><button className="review-btn">Write a review</button></Link>
             </div>
             </div>
             <p className="address"><i>{company.address}</i></p>
