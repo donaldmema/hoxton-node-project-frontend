@@ -45,7 +45,7 @@ export function CompanyReviews(){
                 <div className="content-company">
                   <h2>{company.name}</h2>
                   <p>{company.address}..</p>
-                  <h5>{company.rating}⭐⭐⭐⭐⭐</h5>
+                  <h5>{company.rating} ⭐⭐⭐⭐⭐</h5>
                 </div>
     
               </Link>
