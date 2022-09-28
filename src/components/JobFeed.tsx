@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 type Job = {
   id: number,
@@ -21,7 +22,10 @@ export function JobFeed(){
   }, []);
     return(
         <div className="job-feed">
-            
+          <ul>
+          <Link className="jobfeed-btn" to={"#"}><button>Job feed</button> </Link>
+            <Link className="jobfeed-btn" to={"#"}><button>Recent searches</button></Link>
+          </ul>
         </div>
     )
 }

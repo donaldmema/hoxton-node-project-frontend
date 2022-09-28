@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { NavBarFindJobs } from "../components/NavBarFindJobs";
+import "./CompanyReview.css";
 type Company = {
   id:number,
   name:string,
@@ -44,8 +45,11 @@ export function CompanyReviews(){
                 </div>
                 <div className="content-company">
                   <h2>{company.name}</h2>
-                  <p>{company.address}..</p>
+                  <p><i>{company.address}</i></p>
+                  <div className="content-company-rating">
                   <h5>{company.rating} ⭐⭐⭐⭐⭐</h5>
+                  <p>{company.reviews.length} Reviews</p>
+                  </div>
                 </div>
     
               </Link>

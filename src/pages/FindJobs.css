@@ -1,0 +1,54 @@
+.job-search {
+    border-bottom: thin solid rgba(220, 220, 220, 0.439);
+    padding: 0 260px;
+    padding-bottom:200px ;
+    position: relative;
+  }
+  .job-search-form{
+    display: grid;
+    grid-auto-flow: column;
+    gap: 15px;
+  }
+  .job-search-input{
+    width: 350px;
+    height: 40px;
+    border-radius: 10px;
+    border: thin solid gray;
+    padding-left: 10px;
+  
+  }
+  .job-search-input:focus{
+    outline: none;
+  }
+  
+  .job-search-input::placeholder{
+    color: black;
+    padding-left: 10px;
+    font-weight: 600;
+  }
+  .job-search-btn{
+    width: 150px;
+    color: white;
+    background-color: #2557a7;
+  }
+.job-feed ul{
+  display: grid;
+  grid-auto-flow: column;
+  list-style: none;
+  justify-content: center;
+  border-bottom: thin solid rgba(220, 220, 220, 0.439);
+  padding: 20px 0;
+  gap: 60px;
+  font-size: 20px;
+  
+}
+.job-feed button{
+  font-weight: 400;
+  background-color: transparent;
+  border: none;
+}
+.jobfeed-btn button:focus {
+  outline: none;
+  text-decoration:underline;
+  font-weight: 600;
+}

@@ -1,22 +1,20 @@
 .App {
-  display: grid;
-  grid-template:
-    "navbar-findjob navbar-findjob navbar-findjob" 100px
-    "job-search job-search job-search" 250px
-    "job-feed job-feed job-feed" 800px/
-    850px 600px auto;
-
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    
 }
 .navbar-findjob {
-  grid-area: navbar-findjob;
   align-items: center;
   justify-content: center;
   justify-items: left;
+  top: 0;
+  position: fixed;
+  left:0;
+  right:0;
   text-align: left;
   border-bottom: thin solid rgba(220, 220, 220, 0.439);
   padding-right: 30px;
+  background-color: rgba(255, 255, 255, 0.943);
 }
 .navbar-findjob :hover {
   color: black;
@@ -57,92 +55,4 @@
 .find-job-navbar .active {
   text-decoration: underline;
   color: black;
-}
-
-.job-search {
-  grid-area: job-search;
-  border-bottom: thin solid rgba(220, 220, 220, 0.439);
-}
-.job-search-form{
-  display: grid;
-  grid-auto-flow: column;
-  justify-content: center;
-  margin-top: 80px;
-  gap: 15px;
-}
-.job-search-input{
-  width: 350px;
-  height: 40px;
-  border-radius: 10px;
-  border: thin solid gray;
-  padding-left: 10px;
-
-}
-.job-search-input:focus{
-  outline: none;
-}
-
-.job-search-input::placeholder{
-  color: black;
-  padding-left: 10px;
-  font-weight: 600;
-}
-.job-search-btn{
-  width: 150px;
-  color: white;
-  background-color: #2557a7;
-}
-.job-feed {
-  grid-area: job-feed;
-}
-.company-reviews{
-  margin-left: 200px;
-  margin-top: 100px;
-}
-.company-reviews h3{
-  color: gray;
-  font-weight: 400;
-}
-.company-search-form{
-  display: grid;
-  grid-auto-flow: column;
-  justify-content: center;
-  text-align: center;
-  gap: 15px;
-}
-.company-search-input{
-  width: 700px;
-  height: 50px;
-  border-radius: 10px;
-  border: thin solid gray;
-  padding-left: 10px;
-  margin-left: 260px;
-}
-.company-search-btn{
-  width: 200px;
-  height: 50px;
-  color: white;
-  background-color: #2557a7;
-}
-.companies{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 150px));
-  gap: 30px;
-  justify-content: center;
-  text-decoration: none;
-}
-.companies a{
-  color: black;
-}
-.companies a:hover{
-  color: black;
-}
-
-.company{
-  padding: 20px;
-
-}
-.company img{
-  border-radius: 10px;
-  box-shadow: 2px 2px 10px 0.1px #888888;
 }
