@@ -1,9 +1,14 @@
+import { EmployersNavBar } from "../components/EmployersNavBar";
 import { NavBarFindJobs } from "../components/NavBarFindJobs";
-
+import "./Employers.css";
 export function Employers(){
     return(
         <>
-        <NavBarFindJobs />
+        <EmployersNavBar />
+        <h1>Welcome Companiess!</h1>
+        <form>
+
+        </form>
         </>
     )
 }
