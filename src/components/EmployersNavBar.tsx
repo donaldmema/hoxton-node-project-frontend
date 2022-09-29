@@ -9,7 +9,6 @@ export function EmployersNavBar(){
         <li className="employer-navbar-list-left-two"><NavLink to="/companyreviews">Company Reviews</NavLink></li>
         <li className="employer-navbar-list-right"><NavLink to="/signin">Sign in</NavLink></li>
         <li className="employer-navbar-list-right-two"><NavLink to="/employers">Employers / Post Job</NavLink></li>
-    
         </ul>
         </div>
     )
