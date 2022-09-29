@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./SignInPage.css";
+import "./CreateAccountPage.css";
 import logo from "../assets/logo.png";
 
 export function SignInPage() {
@@ -43,7 +43,7 @@ export function SignInPage() {
             <label htmlFor="email">
               Email address <span>*</span>
             </label>
-            <input id="email" type="email" name="email" required />
+            <input type="email" name="email" required />
             <button className="signup-btn" type="submit">
               Create Account
             </button>
@@ -53,13 +53,3 @@ export function SignInPage() {
     </div>
   );
 }
-
-// const [currentJobDetail, setCurrentJobDetail] = useState<Job>("");
-
-// useEffect(() => {
-//      setCurrentJobDetail(jobs[0])
-// }, []);
-
-// useEffect(() => {
-
-// }, [currentJobDetail]);
