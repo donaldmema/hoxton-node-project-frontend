@@ -70,13 +70,13 @@ export function CompanyDetails(){
           </p>
           <p>
             <h3>Reviews</h3>
-            {company.reviews.map((review) => (
+            {/* {company.reviews.map((review) => (
               <>
               <div className="reviews">
                 <h5>{review.content}</h5>
               </div>
               </>
-            ))}
+            ))} */}
           </p>
           </div>
       </>

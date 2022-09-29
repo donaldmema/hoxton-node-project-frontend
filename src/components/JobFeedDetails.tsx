@@ -1,12 +1,12 @@
 import { SetStateAction, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { JobDetails } from "../pages/JobDetails";
 import { Company, Jobs } from "../types";
 import { AllJobs } from "./AllJobs";
 type Props ={
-  jobs: any,
+  jobs:any
   setJobs: React.Dispatch<SetStateAction<Jobs[]>>
 }
-
   type Job = {
     id: number,
     title: string,
@@ -18,13 +18,7 @@ type Props ={
     companyId:number,
     jobApplication:[]
     };
-
-export function JobFeed({jobs, setJobs}:Props){
-  useEffect(() => {
-    fetch("http://localhost:3005/jobs")
-      .then((resp) => resp.json())
-      .then((jobsFromServer) => setJobs(jobsFromServer));
-  }, []);
+export function JobFeedDetails({jobs, setJobs}:Props){
   const [job, setJob] = useState<Job | null>(null);
   const [companies, setCompanies] = useState<Company[]>([]);
   useEffect(() => {
@@ -35,10 +29,10 @@ export function JobFeed({jobs, setJobs}:Props){
   const params = useParams();
 
  useEffect(() => {
-  fetch(`http://localhost:3005/job-detail/1`)
+  fetch(`http://localhost:3005/job-detail/${params.id}`)
     .then((resp) => resp.json())
-    .then((jobsFromServer) => setJob(jobsFromServer));
-}, []);
+    .then((jobFromServer) => setJob(jobFromServer));
+}, [job]);
 
 if (job === null) return <h2>Loading... </h2>;
     return(
@@ -48,8 +42,8 @@ if (job === null) return <h2>Loading... </h2>;
             <Link className="jobfeed-btn" to={"/recentsearchpage"}><button>Recent searches</button></Link>
           </ul>
           <div className="all-jobs">
-        <AllJobs jobs={jobs} setJobs={setJobs }/>
-        <div className="job-detail">
+          <AllJobs jobs={jobs} setJobs={setJobs }/>
+          <div className="job-detail">
           {companies.filter(company => company.id === job.companyId).map(companies => (
               <>
               <div className="company-name">
@@ -58,7 +52,7 @@ if (job === null) return <h2>Loading... </h2>;
               </div>
               </>
             ))}
-            <button className="job-apply-btn">Apply</button>
+            <button>Apply</button>
             <div className="jobs">
             <h3><u>{job.title}</u></h3>
             <h5><i>{job.jobSummary}</i></h5>
@@ -67,7 +61,7 @@ if (job === null) return <h2>Loading... </h2>;
             <p>Address: <u>{job.location}</u></p>
             </div>
             </div>
+          </div>
             </div>
-        </div>
     )
 }

@@ -6,7 +6,6 @@
 .sign-in-page {
   display: grid;
   width: 100vw;
-  margin-top: -10rem;
   gap: 2rem;
 }
 
