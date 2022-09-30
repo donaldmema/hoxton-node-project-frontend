@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { NavBarFindJobs } from "../components/NavBarFindJobs";
 import "./PostReview.css";
 
@@ -29,6 +30,7 @@ type Props = {
 };
 
 export function PostReviews({ currentUser, signOut }: Props) {
+  const navigate = useNavigate();
   const [companies, setCompanies] = useState<Company[]>([]);
   useEffect(() => {
     fetch(`http://localhost:3005/companies`)
@@ -57,6 +59,8 @@ export function PostReviews({ currentUser, signOut }: Props) {
             },
             body: JSON.stringify(newReview),
           });
+          navigate(`/company/${localStorage.companyId}`);
+          localStorage.removeItem("companyId");
         }}
       >
         <input
