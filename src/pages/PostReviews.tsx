@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { NavBarFindJobs } from "../components/NavBarFindJobs";
 import "./PostReview.css";
 
@@ -29,6 +30,7 @@ type Props = {
 };
 
 export function PostReviews({ currentUser, signOut }: Props) {
+  const navigate = useNavigate();
   const [companies, setCompanies] = useState<Company[]>([]);
   useEffect(() => {
     fetch(`http://localhost:3005/companies`)
@@ -46,46 +48,34 @@ export function PostReviews({ currentUser, signOut }: Props) {
           let newReview = {
             content: event.target.content.value,
             rating: Number(event.target.rating.value),
-            companyId: Number(event.target.companyId.value),
-            userId: Number(event.target.userId.value),
+            companyId: Number(localStorage.companyId),
+            userId: currentUser.id,
           };
+
           fetch("http://localhost:3005/reviews", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify(newReview),
-          }).then(() => {
-            fetch("http://localhost:3005/companies")
-              .then((resp) => resp.json())
-              .then((companiesFromServer) => setCompanies(companiesFromServer));
           });
+          navigate(`/company/${localStorage.companyId}`);
+          localStorage.removeItem("companyId");
         }}
       >
         <input
-          type="text"
+          type="textArea"
           name="content"
           id="text"
-          placeholder="whats the review?"
+          placeholder="Your Review?"
           required
         ></input>
-        <input
-          type="number"
-          name="userId"
-          id="movieId"
-          placeholder="user Id?"
-        ></input>
-        <input
-          type="number"
-          name="companyId"
-          id="companyId"
-          placeholder="company Id?"
-        ></input>
+
         <input
           type="number"
           name="rating"
           id="rating"
-          placeholder="Raiting?"
+          placeholder="Rating?"
         ></input>
         <button className="review-btn">POST</button>
       </form>

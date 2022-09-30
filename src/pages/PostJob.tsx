@@ -7,9 +7,11 @@ import "./PostJob.css";
 type Props = {
     jobs: any;
     setJobs: React.Dispatch<SetStateAction<Jobs[]>>;
+    currentUser: any;
+    signOut: () => void;
   };
 
-export function PostJob({ jobs, setJobs}: Props) {
+export function PostJob({ jobs, setJobs, currentUser, signOut}: Props) {
   useEffect(() => {
     fetch(`http://localhost:3005/jobs`)
       .then((resp) => resp.json())
@@ -18,8 +20,7 @@ export function PostJob({ jobs, setJobs}: Props) {
 
   return (
     <>
-      <EmployersNavBar />
-      
+      <EmployersNavBar currentUser={currentUser} signOut={ signOut} />
       <h1 className="post-h1">READY TO HIRE?</h1>
       <form
         className="post-job"
