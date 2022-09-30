@@ -1,0 +1,11 @@
+export type SignInData = {
+  email: string;
+  password: string;
+};
+
+export type SignUpData = {
+  email: string;
+  password: string;
+  name: string;
+  role: string;
+};

@@ -1,12 +1,38 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./SignInPage.css";
 import logo from "../assets/logo.png";
+import * as API from "../api";
 
-export function SignInPage() {
+type Props = {
+  signIn: (data: { user: any; token: string }) => void;
+};
+
+export function SignInPage({ signIn }: Props) {
+  const navigate = useNavigate();
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    if (email && password) {
+      API.login({ email, password }).then((data) => {
+        if (data.error) {
+          alert(data.error);
+        } else {
+          //sign them in
+          signIn(data);
+          navigate("/homepage");
+        }
+      });
+    }
+  }
+
   return (
     <div className="sign-in-page">
-      <img src={logo} width="200px" alt="indeed-logo" />
+      <img src={logo} width="250px" alt="gjejeVet-logo" />
       <div className="form-container">
         <h3>Ready to take the next step?</h3>
         <h4>Create an account or sign in.</h4>
@@ -17,9 +43,7 @@ export function SignInPage() {
         </p>
         <form
           className="form-section"
-          onSubmit={(event) => {
-            event.preventDefault();
-          }}
+          onSubmit={(event) => handleSubmit(event)}
         >
           <input type="email" placeholder="Email" name="email" required />
           <input
@@ -39,7 +63,14 @@ export function SignInPage() {
           <hr />
         </div>
         <div>
-          <form className="create-account-section">
+          <form
+            className="create-account-section"
+            onSubmit={(event) => {
+              event.preventDefault();
+              localStorage.newUserEmail = event.currentTarget.email.value;
+              navigate("/select-role");
+            }}
+          >
             <label htmlFor="email">
               Email address <span>*</span>
             </label>

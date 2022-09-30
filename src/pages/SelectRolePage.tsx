@@ -1,53 +1,38 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./SelectRolePage.css";
+import welcome from "../assets/welcome.png";
 import logo from "../assets/logo.png";
 
-export function SignInPage() {
+export function SelectRolePage() {
   return (
-    <div className="sign-in-page">
-      <img src={logo} width="200px" alt="indeed-logo" />
-      <div className="form-container">
-        <h3>Ready to take the next step?</h3>
-        <h4>Create an account or sign in.</h4>
-        <p>
-          By creating an account or logging in, you understand and agree to
-          GjejeVet's <a href="">Terms</a>. You also acknowledge our{" "}
-          <a href="">Cookie</a> and <a href="">Privacy</a> policies.
-        </p>
-        <form
-          className="form-section"
-          onSubmit={(event) => {
-            event.preventDefault();
-          }}
-        >
-          <input type="email" placeholder="Email" name="email" required />
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            required
-          />
-          <button className="sign-in-btn" type="submit">
-            Sign In
-          </button>
-        </form>
-
-        <div className="or-div">
-          <hr />
-          OR
-          <hr />
+    <div className="role-page">
+      <img src={logo} width="250px" alt="logo" />
+      <div className="role-form-container">
+        <div className="welcome-image">
+          <img src={welcome} width="200px" alt="welcome-logo" />
         </div>
-        <div>
-          <form className="create-account-section">
-            <label htmlFor="email">
-              Email address <span>*</span>
-            </label>
-            <input type="email" name="email" required />
-            <button className="signup-btn" type="submit">
-              Create Account
+        <div className="roles-section">
+          <h4>Ready for the next step?</h4>
+          <h5>Create an account for tools to help you</h5>
+
+          <Link to={"/sign-up"}>
+            <button
+              onClick={() => {
+                localStorage.role = "USER";
+              }}
+            >
+              Job Seeker
             </button>
-          </form>
+          </Link>
+          <Link to={"/sign-up"}>
+            <button
+              onClick={() => {
+                localStorage.role = "EMPLOYER";
+              }}
+            >
+              Employer
+            </button>
+          </Link>
         </div>
       </div>
     </div>

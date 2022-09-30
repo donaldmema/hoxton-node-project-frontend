@@ -6,7 +6,6 @@
 .sign-in-page {
   display: grid;
   width: 100vw;
-  margin-top: -10rem;
   gap: 2rem;
 }
 
@@ -18,7 +17,6 @@
 .form-container {
   place-self: center;
   display: grid;
-  /* background-color: #f5f5f5; */
   width: 450px;
   height: 550px;
   border-radius: 10px;

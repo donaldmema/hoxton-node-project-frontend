@@ -1,54 +1,85 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./CreateAccountPage.css";
 import logo from "../assets/logo.png";
+import * as API from "../api";
 
-export function SignInPage() {
+type Props = {
+  signIn: (data: { user: any; token: string }) => void;
+};
+
+export function CreateAccountPage({ signIn }: Props) {
+  const navigate = useNavigate();
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const email = localStorage.newUserEmail;
+    const name = form.fullName.value;
+    const password = form.password.value;
+    const role = localStorage.role;
+
+    if (email && password && name) {
+      API.signup({ email, password, name, role }).then((data) => {
+        if (data.error) {
+          alert(data.error);
+        } else {
+          //sign them in
+          signIn(data);
+          navigate("/homepage");
+        }
+      });
+    }
+
+    localStorage.removeItem("newUserEmail");
+    localStorage.removeItem("role");
+  }
+
   return (
-    <div className="sign-in-page">
-      <img src={logo} width="200px" alt="indeed-logo" />
-      <div className="form-container">
-        <h3>Ready to take the next step?</h3>
-        <h4>Create an account or sign in.</h4>
-        <p>
-          By creating an account or logging in, you understand and agree to
-          GjejeVet's <a href="">Terms</a>. You also acknowledge our{" "}
-          <a href="">Cookie</a> and <a href="">Privacy</a> policies.
-        </p>
+    <div className="sign-up-page">
+      <img src={logo} width="250px" alt="indeed-logo" />
+      <div className="sign-up-form-container">
+        <h3>Create your account</h3>
+        <h4>
+          Signing up as <span> {localStorage.newUserEmail} </span>
+          <a href="/signin"> (not you?)</a>
+        </h4>
+
         <form
-          className="form-section"
-          onSubmit={(event) => {
-            event.preventDefault();
-          }}
+          className="sign-up-form-section"
+          onSubmit={(event) => handleSubmit(event)}
         >
-          <input type="email" placeholder="Email" name="email" required />
+          <label htmlFor="name">Full Name</label>
+          <input
+            type="text"
+            placeholder="Full Name"
+            name="fullName"
+            id="name"
+            required
+          />
+          <label htmlFor="password">
+            Password <span>*</span> <br />
+            <p>Use at least 8 characters</p>
+          </label>
+
           <input
             type="password"
+            id="password"
             placeholder="Password"
             name="password"
             required
           />
-          <button className="sign-in-btn" type="submit">
-            Sign In
+
+          <p>
+            By creating an account or logging in, you understand and agree to
+            GjejeVet's <a href="">Terms</a>. You also acknowledge our{" "}
+            <a href="">Cookie</a> and <a href="">Privacy</a> policies.
+          </p>
+
+          <button className="sign-up-btn" type="submit">
+            Create account
           </button>
         </form>
-
-        <div className="or-div">
-          <hr />
-          OR
-          <hr />
-        </div>
-        <div>
-          <form className="create-account-section">
-            <label htmlFor="email">
-              Email address <span>*</span>
-            </label>
-            <input type="email" name="email" required />
-            <button className="signup-btn" type="submit">
-              Create Account
-            </button>
-          </form>
-        </div>
       </div>
     </div>
   );
