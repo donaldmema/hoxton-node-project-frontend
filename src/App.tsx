@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import "./App.css";
@@ -6,14 +6,17 @@ import { CompanyDetails } from "./pages/CompanyDetails";
 import { CompanyReviews } from "./pages/CompanyReviews";
 import { Employers } from "./pages/Employers";
 import { FindJobs } from "./pages/FindJobs";
+import { JobDetails } from "./pages/JobDetails";
 import { PostReviews } from "./pages/PostReviews";
+import { RecentSearchPage } from "./pages/RecentSearchPage";
 import { SignInPage } from "./pages/SignInPage";
 import { CreateAccountPage } from "./pages/CreateAccountPage";
 import { SelectRolePage } from "./pages/SelectRolePage";
-
+import { Jobs } from "./types";
 import * as API from "./api";
 
 function App() {
+  const [jobs, setJobs] = useState<Jobs[]>([]);
   const [currentUser, setCurrentUser] = useState(null);
 
   function signIn(data: { user: any; token: string }) {
@@ -41,10 +44,16 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route index element={<Navigate to="/homepage" />} />
         <Route
           path="/homepage"
-          element={<FindJobs currentUser={currentUser} signOut={signOut} />}
+          element={
+            <FindJobs
+              currentUser={currentUser}
+              signOut={signOut}
+              jobs={jobs}
+              setJobs={setJobs}
+            />
+          }
         />
         <Route
           path="/company/:id"
@@ -68,6 +77,25 @@ function App() {
         <Route
           path="/sign-up"
           element={<CreateAccountPage signIn={signIn} />}
+        />
+
+        <Route
+          path="/recentsearchpage"
+          element={
+            <RecentSearchPage currentUser={currentUser} signOut={signOut} />
+          }
+        />
+
+        <Route
+          path="/job-detail/:id"
+          element={
+            <JobDetails
+              jobs={jobs}
+              setJobs={setJobs}
+              currentUser={currentUser}
+              signOut={signOut}
+            />
+          }
         />
       </Routes>
     </div>

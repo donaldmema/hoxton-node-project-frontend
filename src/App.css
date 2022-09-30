@@ -56,3 +56,64 @@
   text-decoration: underline;
   color: black;
 }
+/* Employers navbar*/
+
+.navbar-employer {
+  align-items: center;
+  justify-content: center;
+  justify-items: left;
+  color: white;
+  top: 0;
+  position: fixed;
+  left:0;
+  right:0;
+  text-align: left;
+  border-bottom: thin solid rgba(220, 220, 220, 0.439);
+  padding-right: 30px;
+  background-color: #181818;
+}
+.navbar-employer :hover {
+  color: white;
+}
+.navbar-employer ul {
+  list-style: none;
+  color: white;
+  display: grid;
+  display: grid;
+  grid-auto-flow: column;
+  align-content: center;
+  text-decoration: none;
+  align-items: center;
+}
+.navbar-employer a{
+  text-decoration: none;
+  color: white;
+}
+.navbar-employer li:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.find-job-employer a{
+  text-decoration: none;
+}
+.employer-navbar-list-left {
+  float: left;
+  position: relative;
+  right: 140px;
+}
+.employer-navbar-list-left-two {
+  float: left;
+  position: relative;
+  right: 260px;
+}
+.employer-navbar-list-right {
+  float: right;
+  position: relative;
+  left: 400px;
+}
+
+.employer-navbar .active {
+  text-decoration: underline;
+  color: white;
+}

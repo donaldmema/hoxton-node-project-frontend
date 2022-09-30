@@ -22,6 +22,24 @@ type Props = {
 
 export function CompanyReviews({ currentUser, signOut }: Props) {
   const [companies, setCompanies] = useState<Company[]>([]);
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+
+    const companieTitle = form.searchcompanies.value;
+
+    if (companieTitle) {
+      fetch(`http://localhost:3005/companies/company/${companieTitle}`)
+        .then((resp) => resp.json())
+        .then((companiesFromServer) => setCompanies(companiesFromServer));
+    } else {
+      fetch("http://localhost:3005/companies")
+        .then((resp) => resp.json())
+        .then((companiesFromServer) => setCompanies(companiesFromServer));
+    }
+  }
   useEffect(() => {
     fetch("http://localhost:3005/companies")
       .then((resp) => resp.json())
@@ -34,10 +52,14 @@ export function CompanyReviews({ currentUser, signOut }: Props) {
         <h1>Find great places to work</h1>
         <h3>Get access to millions of company reviews</h3>
         <h4>Company name or job title</h4>
-        <form className="company-search-form">
+        <form
+          className="company-search-form"
+          onSubmit={(event) => handleSubmit(event)}
+        >
           <input
             className="company-search-input"
             type="search"
+            name="searchcompanies"
             placeholder="search"
           ></input>
           <button className="company-search-btn">Find Companies</button>

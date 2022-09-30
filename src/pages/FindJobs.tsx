@@ -1,15 +1,20 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { SetStateAction } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { JobFeed } from "../components/JobFeed";
 import { JobSearch } from "../components/JobSearch";
 import { NavBarFindJobs } from "../components/NavBarFindJobs";
+import { Jobs } from "../types";
 import "./FindJobs.css";
 
 type Props = {
   currentUser: any;
   signOut: () => void;
+  jobs: any;
+  setJobs: React.Dispatch<SetStateAction<Jobs[]>>;
 };
 
-export function FindJobs({ currentUser, signOut }: Props) {
+export function FindJobs({ jobs, setJobs, currentUser, signOut }: Props) {
   const navigate = useNavigate();
   return (
     <>
@@ -18,8 +23,8 @@ export function FindJobs({ currentUser, signOut }: Props) {
       ) : (
         <>
           <NavBarFindJobs currentUser={currentUser} signOut={signOut} />
-          <JobSearch />
-          <JobFeed />
+          <JobSearch setJobs={setJobs} />
+          <JobFeed jobs={jobs} setJobs={setJobs} />
         </>
       )}
     </>
