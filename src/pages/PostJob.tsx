@@ -22,7 +22,7 @@ export function PostJob({ jobs, setJobs, currentUser, signOut }: Props) {
   const navigate = useNavigate();
 
   return (
-    <>
+    <div className="job-posting">
       <EmployersNavBar currentUser={currentUser} signOut={signOut} />
       <h1 className="post-h1">READY TO HIRE?</h1>
       <form
@@ -124,6 +124,6 @@ export function PostJob({ jobs, setJobs, currentUser, signOut }: Props) {
         ></input>
         <button className="review-btn">POST</button>
       </form>
-    </>
+    </div>
   );
 }

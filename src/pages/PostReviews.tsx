@@ -41,6 +41,7 @@ export function PostReviews({ currentUser, signOut }: Props) {
   return (
     <>
       <NavBarFindJobs currentUser={currentUser} signOut={signOut} />
+      <h1 className="review-h1">Share your experience, write a review.</h1>
       <form
         className="post-review"
         onSubmit={(event) => {

@@ -1,8 +1,9 @@
+
 .post-job{
     margin: 0 500px;
     display: grid;
     width: 400px;
-    gap: 2px;
+    gap: 5px;
 }
 .post-h1{
     margin: 0 500px;
