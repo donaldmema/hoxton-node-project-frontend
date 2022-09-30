@@ -67,7 +67,10 @@ function App() {
             <CompanyReviews currentUser={currentUser} signOut={signOut} />
           }
         />
-        <Route path="/employers" element={<Employers />} />
+        <Route
+          path="/employers"
+          element={<Employers currentUser={currentUser} signOut={signOut} />}
+        />
         <Route
           path="/postreview/"
           element={<PostReviews currentUser={currentUser} signOut={signOut} />}

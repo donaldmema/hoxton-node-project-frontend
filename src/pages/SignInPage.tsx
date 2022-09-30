@@ -24,7 +24,13 @@ export function SignInPage({ signIn }: Props) {
         } else {
           //sign them in
           signIn(data);
-          navigate("/homepage");
+          if (data.user.role === "USER") {
+            navigate("/homepage");
+          } else if (data.user.role === "EMPLOYER") {
+            navigate("/employers");
+          } else {
+            navigate("/homepage");
+          }
         }
       });
     }

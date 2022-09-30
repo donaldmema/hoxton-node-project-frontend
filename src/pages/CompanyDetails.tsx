@@ -51,7 +51,14 @@ export function CompanyDetails({ currentUser, signOut }: Props) {
               <div className="follow-review-btn">
                 <button className="follow-btn">Follow</button>
                 <Link to={"/postreview/"}>
-                  <button className="review-btn">Write a review</button>
+                  <button
+                    onClick={() => {
+                      localStorage.companyId = company.id;
+                    }}
+                    className="review-btn"
+                  >
+                    Write a review
+                  </button>
                 </Link>
               </div>
             </div>

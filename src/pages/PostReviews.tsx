@@ -46,46 +46,32 @@ export function PostReviews({ currentUser, signOut }: Props) {
           let newReview = {
             content: event.target.content.value,
             rating: Number(event.target.rating.value),
-            companyId: Number(event.target.companyId.value),
-            userId: Number(event.target.userId.value),
+            companyId: Number(localStorage.companyId),
+            userId: currentUser.id,
           };
+
           fetch("http://localhost:3005/reviews", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify(newReview),
-          }).then(() => {
-            fetch("http://localhost:3005/companies")
-              .then((resp) => resp.json())
-              .then((companiesFromServer) => setCompanies(companiesFromServer));
           });
         }}
       >
         <input
-          type="text"
+          type="textArea"
           name="content"
           id="text"
-          placeholder="whats the review?"
+          placeholder="Your Review?"
           required
         ></input>
-        <input
-          type="number"
-          name="userId"
-          id="movieId"
-          placeholder="user Id?"
-        ></input>
-        <input
-          type="number"
-          name="companyId"
-          id="companyId"
-          placeholder="company Id?"
-        ></input>
+
         <input
           type="number"
           name="rating"
           id="rating"
-          placeholder="Raiting?"
+          placeholder="Rating?"
         ></input>
         <button className="review-btn">POST</button>
       </form>

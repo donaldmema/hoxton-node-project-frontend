@@ -26,7 +26,13 @@ export function CreateAccountPage({ signIn }: Props) {
         } else {
           //sign them in
           signIn(data);
-          navigate("/homepage");
+          if (role === "USER") {
+            navigate("/homepage");
+          } else if (role === "EMPLOYER") {
+            navigate("/employers");
+          } else {
+            navigate("/homepage");
+          }
         }
       });
     }
