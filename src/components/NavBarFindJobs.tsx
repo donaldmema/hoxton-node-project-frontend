@@ -31,14 +31,14 @@ export function NavBarFindJobs({ currentUser, signOut }: Props) {
             </li>
           </>
         ) : (
-          <>
-            <li className="find-job-navbar-list-right">
+          <div className="signed-in">
+            <li className="find-job-navbar-signedin">
               <BsBellFill />
             </li>
-            <li className="find-job-navbar-list-right-two">
+            <li className="find-job-navbar-signedin-two">
               <BsPersonFill />
             </li>
-            <li className="find-job-navbar-list-right-three">
+            <li className="find-job-navbar-signedin-three">
               {currentUser.name}
             </li>
             <button
@@ -49,7 +49,7 @@ export function NavBarFindJobs({ currentUser, signOut }: Props) {
             >
               Sign out
             </button>
-          </>
+          </div>
         )}
       </ul>
     </div>

@@ -32,3 +32,11 @@ export type Company = {
   reviews: []
   jobs: []
   };
+
+  export type Reviews = {
+    id: number;
+    companyId: number;
+    userId: number;
+    rating: number;
+    content: string;
+  };

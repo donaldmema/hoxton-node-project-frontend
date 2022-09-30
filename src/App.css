@@ -117,3 +117,19 @@
   text-decoration: underline;
   color: white;
 }
+/*signed-in*/
+.signed-in{
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: end;
+  gap: 15px;
+}
+.signed-in button{
+  width: 100px;
+  height: 40px;
+  background-color: #314c76;
+  border: none;
+  color: white;
+  font-weight: 500;
+}
